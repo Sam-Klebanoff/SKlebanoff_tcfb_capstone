@@ -6,7 +6,7 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "figures/")
 library(tidyverse)
 ```
 
@@ -127,7 +127,7 @@ into two separate data frames by 'glaucoma positive' vs 'healthy', with the idea
 and whole datasets might be masked by the differences between glaucoma positive and healthy patients. I then created summary data 
 frames which contain the mean and standard deviation of each variable, for each dataset. This should allow easy visual comparison.
 
-```{r, fig.width=15, fig.height=16}
+```{r Q1_training_vs_testing_data, fig.width=15, fig.height=16}
 # I chose to use grid and gridExtra in this visualization, so that I could take advantage of grid.arrange
 # This allowed me to make separate graphs for each variable, grouped by +/- glaucoma, showing the relationship
 # between test, training, and whole for each variable. I then tiled all the graphs together using grid/gridExtra

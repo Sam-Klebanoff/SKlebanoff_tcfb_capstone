@@ -211,16 +211,17 @@ print(summary_df_h)
 For this question I imported the test, training, and whole datasets into
 separate data frames. I split the data from each table into two separate
 data frames by ‘glaucoma positive’ vs ‘healthy’, with the idea that
-difference between the test, training, and whole datasets might masked
-by the differences between glaucoma positive and healthy patients. I
-then created summary data frames which contain the mean and standard
-deviation of each variable, for each dataset. This should allow easy
-visual comparison.
+difference between the test, training, and whole datasets might be
+masked by the differences between glaucoma positive and healthy
+patients. I then created summary data frames which contain the mean and
+standard deviation of each variable, for each dataset. This should allow
+easy visual comparison.
 
 ``` r
 # I chose to use grid and gridExtra in this visualization, so that I could take advantage of grid.arrange
 # This allowed me to make separate graphs for each variable, grouped by +/- glaucoma, showing the relationship
 # between test, training, and whole for each variable. I then tiled all the graphs together using grid/gridExtra
+library(grid)
 library(gridExtra)
 ```
 
@@ -232,8 +233,6 @@ library(gridExtra)
     ##     combine
 
 ``` r
-library(grid)
-
 g_age_plot <- ggplot(summary_df_g, aes(x=dataset, y=mean_age)) + geom_point() + 
               geom_errorbar(aes(ymin = mean_age-std_age, ymax = mean_age+std_age), width = 0.3) + 
               theme_classic() + labs(title = "Age", y = NULL, x = NULL) + 
@@ -306,7 +305,7 @@ grid.arrange(g_title, g_age_plot, g_OP_plot, g_MD_plot, g_PSD_plot, g_GHT_plot, 
              layout_matrix=layout)
 ```
 
-![](report_r_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](figures/Q1_training_vs_testing_data-1.png)<!-- -->
 
 As can be seen in these graphs, there are no significant differences
 between the test, training, and whole datasets for any of the variables,
